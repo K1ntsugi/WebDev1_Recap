@@ -1,0 +1,24 @@
+#+TITLE: Web-Developement 1 - Recap
+#+AUTHOR: Maximilian Groetsch
+#+STARTUP: showeverything
+#+PROPERTY: header-args :tangle Funktionen.js
+
+
+
+* Besonderheiten von Funktionen in Javascript
+** Funktionen als FirstClass Objekte
+#+begin_src js
+
+    const run = {
+      name : "Test",
+      output : function () {
+        console.log("Did it work ?")
+      }
+    }
+
+    run.output();
+
+#+end_src
+
+#+RESULTS:
+: Did it work ?
