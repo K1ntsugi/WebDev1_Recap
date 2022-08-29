@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="M. Groetsch">
-    <title>WebDev1 Recap - Basics</title>
-    <style>
-        body {
-            background-color: rgb(23, 24, 36);
-            color: white;
-        }
-    </style>
-</head>
-
-<body>
-    <script>
-        "use strict"
-        // https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Strict_mode
-        // Beispiel Javascript-Objekt
-        const person = {
+ const person = {
             vorname: 'Max',
             nachname: 'Grötsch',
             greet: function () {
@@ -87,7 +65,7 @@
         /*
          * - concat()
          * - forEach() ----
-         * - filter()      | diese 3 werden mit Lambda Ausdrücken gesteuert  
+         * - filter()      | diese 3 werden mit Lambda Ausdrücken gesteuert
          * - map()     ----
          * - join() [Wandelt Array in Zeichenkette um]
          * - push(), pop()
@@ -212,8 +190,3 @@
         for (let i = 10; i > 0; i--) {
             console.log(i);
         }
-
-    </script>
-</body>
-
-</html>
