@@ -1,11 +1,11 @@
 # Readme
 
 ## Quickstart
-[README.org]: https://github.com/K1ntsugi/WebDev1_Recap/blob/main/READEME.org
+https://github.com/K1ntsugi/WebDev1_Recap/blob/main/READEME.org
 
 ## Description
 Diese Repository ist für Menschen wie mich, die im Bereich Web-Developement Nachholbedarf haben und ihre 
-Schwächen nicht unbedingt bei HTML oder CSS sehen, sonder Javascript und PHP (fall noch Zeit ist, werde ich CSS auch widerholen)
+Schwächen nicht unbedingt bei HTML oder CSS sehen, sondern ihre Javascript- und PHP-Kentnisse aufbauen möchten (falls noch Zeit ist, werde ich CSS auch widerholen)
 
 ## Quellen
 Ich richte mich bei der Nacharbeit an die im Modulhandbuch ausgewiesenen Bücher.
