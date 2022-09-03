@@ -269,6 +269,8 @@ console.log(operation.name);
 
 *** Funktionen in Arrays
 #+begin_src js :tangle Funktionen.js
+//#####################################################################################################################
+
 function add(x,y) {
   return x+y;
 }
@@ -312,6 +314,24 @@ for (let i = 0; i < operations.length; i++){
 : 0.5
 
 *** Funktionen als Funktionsparameter
+#+begin_src js :tangle Funktionen.js
+//#####################################################################################################################
+
+function metaOperation(operation, x, y){
+  return operation(x,y);
+}
+
+// Beispiel für eine nicht ausimplemetierte Callback-Funktion
+function asyncFunction(callback) {
+let result = 0;
+/* Hier die Berechnung des Ergebnisses */
+callback(result);
+}
+#+end_src
+
+#+RESULTS:
+
+*** Funktionen als Rückgabewert
 #+begin_src js :tangle Funktionen.js
 
 #+end_src

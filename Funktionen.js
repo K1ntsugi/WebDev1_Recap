@@ -11,6 +11,8 @@ console.log(result2);
 console.log(add_0.name);
 console.log(operation.name);
 
+//#####################################################################################################################
+
 function add(x,y) {
   return x+y;
 }
@@ -43,4 +45,17 @@ for (let i = 0; i < operations.length; i++){
   const res = op(x,y);
   console.log(res);
 
+}
+
+//#####################################################################################################################
+
+function metaOperation(operation, x, y){
+  return operation(x,y);
+}
+
+// Beispiel für eine nicht ausimplemetierte Callback-Funktion
+function asyncFunction(callback) {
+let result = 0;
+/* Hier die Berechnung des Ergebnisses */
+callback(result);
 }
