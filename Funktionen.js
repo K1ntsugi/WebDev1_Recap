@@ -1,8 +1,46 @@
-    const run = {
-      name : "Test",
-      output : function () {
-        console.log("Did it work ?")
-      }
-    }
+function add_0(x,y){
+  return x + y;
+}
 
-    run.output();
+const operation = add_0;
+const result = add_0(2,2);
+const result2 = operation(2,2);
+
+console.log(result);
+console.log(result2);
+console.log(add_0.name);
+console.log(operation.name);
+
+function add(x,y) {
+  return x+y;
+}
+
+function subtract(x,y) {
+  return x-y;
+}
+
+function multiply(x,y) {
+  return x*y;
+}
+
+function divide(x,y) {
+  return x/y;
+}
+
+const operations = [
+  add,
+  subtract,
+  multiply,
+  divide
+]
+
+let op;
+for (let i = 0; i < operations.length; i++){
+
+  op = operations[i];
+  const x = (i+1)*2;
+  const y = (i+1)*4;
+  const res = op(x,y);
+  console.log(res);
+
+}
