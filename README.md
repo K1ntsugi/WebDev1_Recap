@@ -1,7 +1,7 @@
 # Readme
 
 ## Quickstart
-README.org 
+[README.org]: https://github.com/K1ntsugi/WebDev1_Recap/blob/main/READEME.org
 
 ## Description
 Diese Repository ist für Menschen wie mich, die im Bereich Web-Developement Nachholbedarf haben und ihre 
