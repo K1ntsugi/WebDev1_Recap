@@ -59,3 +59,36 @@ let result = 0;
 /* Hier die Berechnung des Ergebnisses */
 callback(result);
 }
+
+//#####################################################################################################################
+
+function operationFactory(name) {
+    switch(name) {
+        case 'add': return function(x, y) {
+            return x + y;
+        }
+        case 'subtract': return function(x, y) {
+            return x - y;
+        }
+        case 'multiply': return function(x, y) {
+            return x * y;
+        }
+        case 'divide': return function(x, y) {
+            return x / y;
+        }
+        default: return function() {
+            return NaN;
+        }
+    }
+}
+
+const add = operationFactory('add');
+console.log(add(2, 2));
+const subtract= operationFactory('subtract');
+console.log(subtract(2, 2));
+const multiply = operationFactory('multiply');
+console.log(multiply(2, 2));
+const divide = operationFactory ('divide');
+console.log(divide(2, 2));
+const unknown = operationFactory('unknown');
+console.log(unknown(2, 2));
