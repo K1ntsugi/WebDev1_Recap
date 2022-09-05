@@ -63,23 +63,23 @@ callback(result);
 //#####################################################################################################################
 
 function operationFactory(name) {
-  switch(name) {
-      case 'add': return function(x, y) {
-          return x + y;
-      }
-      case 'subtract': return function(x, y) {
-          return x - y;
-      }
-      case 'multiply': return function(x, y) {
-          return x * y;
-      }
-      case 'divide': return function(x, y) {
-          return x / y;
-      }
-      default: return function() {
-          return NaN;
-      }
-  }
+    switch(name) {
+        case 'add': return function(x, y) {
+            return x + y;
+        }
+        case 'subtract': return function(x, y) {
+            return x - y;
+        }
+        case 'multiply': return function(x, y) {
+            return x * y;
+        }
+        case 'divide': return function(x, y) {
+            return x / y;
+        }
+        default: return function() {
+            return NaN;
+        }
+    }
 }
 
 const add = operationFactory('add');
@@ -92,3 +92,29 @@ const divide = operationFactory ('divide');
 console.log(divide(2, 2));
 const unknown = operationFactory('unknown');
 console.log(unknown(2, 2));
+
+// Die selbe Funktion mit Arrow-Operator implemetiert
+function arrowFactory(name) {
+    switch(name) {
+        case 'add': return (x, y) => x + y;
+        case 'subtract': return (x, y) => x - y;
+        case 'multiply': return (x, y) => x * y;
+        case 'divide': return (x, y) => x / y;
+        default: return() => NaN;
+    }
+}
+
+const fruit = {
+    name : 'Banana',
+    getName: function() {
+        return this.name;
+    }
+}
+
+console.log(fruit.getName()); // output: Banana, wie erwartet
+
+function getNameGlobal() {
+    return this.name;
+}
+
+console.log(getNameGlobal());

@@ -365,6 +365,17 @@ const divide = operationFactory ('divide');
 console.log(divide(2, 2));
 const unknown = operationFactory('unknown');
 console.log(unknown(2, 2));
+
+// Die selbe Funktion mit Arrow-Operator implemetiert
+function arrowFactory(name) {
+    switch(name) {
+        case 'add': return (x, y) => x + y;
+        case 'subtract': return (x, y) => x - y;
+        case 'multiply': return (x, y) => x * y;
+        case 'divide': return (x, y) => x / y;
+        default: return() => NaN;
+    }
+}
 #+end_src
 
 #+RESULTS:
@@ -373,3 +384,35 @@ console.log(unknown(2, 2));
 : 4
 : 1
 : NaN
+
+*** Kontext von Funktionen (this)
+Die Bedeutung von *"this"* ist in Java/C# eine andere als in JavaScript.
+- In Java wird damit innerhalb einer Objektmethode (z.B. im Konstruktor) die aktuelle Objektinstanz angesprochen. This drückt somit eine reflexive Beziehung aus.
+- In JavaScript sind Funktionen selbst Objekte. "this" zeigt also nicht auf das Objekt in dem die Funktion definiert wurde, sondern auf dem Objekt auf dem die Funktion ausgeführt wird.
+
+Folgendes Beispiel verhält sich für den Java-Jünger wie erwartet:
+#+begin_src js :tangle Funktionen.js
+const fruit = {
+    name : 'Banana',
+    getName: function() {
+        return this.name;
+    }
+}
+
+console.log(fruit.getName()); // output: Banana, wie erwartet
+#+end_src
+
+#+RESULTS:
+: Banana
+
+Wenn wir alledings eine globale Funktion definieren erhält der Java-Akolyth eine unerwartete Überaschung:
+#+begin_src js :tangle Funktionen.js
+function getNameGlobal() {
+    return this.name;
+}
+
+console.log(getNameGlobal());
+#+end_src
+
+#+RESULTS:
+: undefined
