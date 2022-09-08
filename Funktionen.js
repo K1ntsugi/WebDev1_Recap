@@ -157,7 +157,7 @@ example(true);
 //#####################################################################################################################
 
 // Bsp 1: Überladen durch weggelassen
-function addOverload(x, y, log){
+function add(x, y, log){
     const result = x + y;
     if(log) {
         console.log(result);
@@ -169,7 +169,7 @@ addOverload(2,2);
 addOverload(2,2,true);
 
 // Bsp 2: Überladen durch arguemts-Parameter
-function multiplyOverload(x,y){
+function multiply(x,y){
     const result = x * y;
     if(arguments[2]){
         console.log(result);
@@ -181,7 +181,7 @@ multiplyOverload(2,2);
 multiplyOverload(2,2,true);
 
 // Bsp 3: Konfigurations-Objekt
-function subOverload(x, y, config){
+function sub(x, y, config){
     const result = x - y;
     if(config && config.log) {
         console.log(result);
@@ -190,4 +190,4 @@ function subOverload(x, y, config){
 }
 
 subOverload(4,2);
-subOverload(4,2,{log : true});
+subOverload(4,2 ,{log : true});
