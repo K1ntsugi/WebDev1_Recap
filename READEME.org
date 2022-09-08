@@ -386,7 +386,7 @@ function arrowFactory(name) {
 : NaN
 
 *** Kontext von Funktionen (this)
-Die Bedeutung von *"this"* ist in Java/C# eine andere als in JavaScript.
+Die Bedeutung von /this/ ist in Java/C# eine andere als in JavaScript.
 - In Java wird damit innerhalb einer Objektmethode (z.B. im Konstruktor) die aktuelle Objektinstanz angesprochen. This drückt somit eine reflexive Beziehung aus.
 - In JavaScript sind Funktionen selbst Objekte. "this" zeigt also nicht auf das Objekt in dem die Funktion definiert wurde, sondern auf dem Objekt auf dem die Funktion ausgeführt wird.
 
@@ -439,6 +439,7 @@ Das heißt für die Gültikeit/Sichtbarkeit von von Variablen sind nicht die {ge
 Variablen, die innerhalb einer Funktion definiert werden, sind innerhalb der gesamten Funktion sichtbar sowie innerhalb anderer (innerer) Funktionen, die in der (äußeren) Funktion definiert sind. (Diese Verhalten gilt allerdings nur für Variablen die mit var deklariert werden!)
 
 #+begin_src js
+//#####################################################################################################################
 function example(x) {
     if(x) {
         var y = 4711;
@@ -455,3 +456,65 @@ example(true);
 #+RESULTS:
 : 4711
 : 4711
+
+Verschieben wir den output Befehl an dne Anfang.
+#+begin_src js
+function example(x) {
+    console.log(y);
+    console.log(i);
+
+    if(x) {
+        var y = 4711;
+    }
+    for(var i=0; i<4711; i++) {
+        /* Irgendwas machen */
+    }
+}
+example(true);
+#+end_src
+
+#+RESULTS:
+: undefined
+: undefined
+
+Erhalten wir als Ergebnis "undefined", nicht aber einen Reference-Error, den wir erwarten würden.
+Der Grund für die Ausgabe ist, dass alle Variablendeklarationen bereits zu Beginn der Funktion bekannt sind. Man nennt dies:
++ *Hoisting/Variablen-Hoisting*
+
+*** Best Practice
+- Variablendeklarator (var, let, const) immer angeben, andernfalls wird die Variable global angelegt
+- Variablen zu Beginn einer Funktion deklarieren
+*** Funktionen überladen
+Die Möglichkeit Funktionen wie in Java zu überladen, indem man eine neue Funktion mit gleichen Namen aber abweichender Parameteranzahl oder Typ respektive Rückgabetyp angibt steht in JavaScript nicht zur verfügung
+
+Stattdessen müssen alle Parameter in eine Funktion implemetiert werden und dann beim Aufruf etsprechend weggelassen werden. Oder das Ansteuern der Funktionsparameter wird über den /argumets/ Parameter der Funktion realisiert
+
+#+begin_src js :tangle Funktionen.js
+//#####################################################################################################################
+
+// Bsp 1: Überladen durch weggelassen
+function addOverload(x, y, log){
+    const result = x + y;
+    if(log) {
+        console.log(result);
+    }
+    return result;
+}
+
+addOverload(2,2);
+addOverload(2,2,true);
+
+// Bsp 2: Überladen durch arguemts-Parameter
+function multiplyOverload(x,y){
+    const result = x * y;
+    if(arguments[2]){
+        console.log(result);
+    }
+    return result;
+}
+
+multiplyOverload(2,2);
+multiplyOverload(2,2,true);
+#+end_src
+
+#+RESULTS:
