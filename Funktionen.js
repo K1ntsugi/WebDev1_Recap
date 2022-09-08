@@ -127,3 +127,67 @@ const anotherFruit = {
 }
 
 console.log(anotherFruit.getName());
+
+//#####################################################################################################################
+function example(x) {
+    if(x) {
+        var y = 4711;
+    }
+    for(var i=0; i<4711; i++) {
+        /* Irgendwas machen */
+    }
+    console.log(y);
+    console.log(i);
+}
+example(true);
+
+function example(x) {
+    console.log(y);
+    console.log(i);
+
+    if(x) {
+        var y = 4711;
+    }
+    for(var i=0; i<4711; i++) {
+        /* Irgendwas machen */
+    }
+}
+example(true);
+
+//#####################################################################################################################
+
+// Bsp 1: Überladen durch weggelassen
+function addOverload(x, y, log){
+    const result = x + y;
+    if(log) {
+        console.log(result);
+    }
+    return result;
+}
+
+addOverload(2,2);
+addOverload(2,2,true);
+
+// Bsp 2: Überladen durch arguemts-Parameter
+function multiplyOverload(x,y){
+    const result = x * y;
+    if(arguments[2]){
+        console.log(result);
+    }
+    return result;
+}
+
+multiplyOverload(2,2);
+multiplyOverload(2,2,true);
+
+// Bsp 3: Konfigurations-Objekt
+function subOverload(x, y, config){
+    const result = x - y;
+    if(config && config.log) {
+        console.log(result);
+    }
+    return result;
+}
+
+subOverload(4,2);
+subOverload(4,2,{log : true});
