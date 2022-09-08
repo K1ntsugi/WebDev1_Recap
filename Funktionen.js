@@ -104,6 +104,8 @@ function arrowFactory(name) {
     }
 }
 
+//#####################################################################################################################
+
 const fruit = {
     name : 'Banana',
     getName: function() {
@@ -118,3 +120,10 @@ function getNameGlobal() {
 }
 
 console.log(getNameGlobal());
+
+const anotherFruit = {
+    name : 'Kiwi',
+    getName: getNameGlobal
+}
+
+console.log(anotherFruit.getName());

@@ -392,6 +392,8 @@ Die Bedeutung von *"this"* ist in Java/C# eine andere als in JavaScript.
 
 Folgendes Beispiel verhält sich für den Java-Jünger wie erwartet:
 #+begin_src js :tangle Funktionen.js
+//#####################################################################################################################
+
 const fruit = {
     name : 'Banana',
     getName: function() {
@@ -412,7 +414,44 @@ function getNameGlobal() {
 }
 
 console.log(getNameGlobal());
+
+const anotherFruit = {
+    name : 'Kiwi',
+    getName: getNameGlobal
+}
+
+console.log(anotherFruit.getName());
+
 #+end_src
 
 #+RESULTS:
 : undefined
+: Kiwi
+
+Das Ergebnis der Ausgabe lautet "undefined", denn sie bezieht sich jetzt auf den globalen Kontext bzw. auf das globale Objekt.
+Das globale Objekt ist von der Laufzeitumgebung abhängig. Im Browse ist es das window-Objekt.
+Mit dem Objekt anotherFruit wird gezeigt wie man globale Funktion in Objekte eibauen kann.
+
+*** Scope
+JavaScript arbeitet nicht mit Block-Scope, sondern mit Function-Level-Scope.
+Das heißt für die Gültikeit/Sichtbarkeit von von Variablen sind nicht die {geschweiften Klammern} maßgeblich, sondern die umgebenden Funktionen bestimmen über das Sichtbarkeitsverhalten.
+
+Variablen, die innerhalb einer Funktion definiert werden, sind innerhalb der gesamten Funktion sichtbar sowie innerhalb anderer (innerer) Funktionen, die in der (äußeren) Funktion definiert sind. (Diese Verhalten gilt allerdings nur für Variablen die mit var deklariert werden!)
+
+#+begin_src js
+function example(x) {
+    if(x) {
+        var y = 4711;
+    }
+    for(var i=0; i<4711; i++) {
+        /* Irgendwas machen */
+    }
+    console.log(y);
+    console.log(i);
+}
+example(true);
+#+end_src
+
+#+RESULTS:
+: 4711
+: 4711
