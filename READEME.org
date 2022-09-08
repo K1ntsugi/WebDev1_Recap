@@ -478,8 +478,7 @@ example(true);
 : undefined
 
 Erhalten wir als Ergebnis "undefined", nicht aber einen Reference-Error, den wir erwarten würden.
-Der Grund für die Ausgabe ist, dass alle Variablendeklarationen bereits zu Beginn der Funktion bekannt sind. Man nennt dies:
-+ *Hoisting/Variablen-Hoisting*
+Der Grund für die Ausgabe ist, dass alle Variablendeklarationen bereits zu Beginn der Funktion bekannt sind. Man nennt dies *Hoisting/Variablen-Hoisting*
 
 *** Best Practice
 - Variablendeklarator (var, let, const) immer angeben, andernfalls wird die Variable global angelegt
@@ -537,3 +536,19 @@ function sub(x, y, config){
 subOverload(4,2);
 subOverload(4,2 ,{log : true});
 #+end_src
+
+** Standardmethoden jeder Funktion
+Diese sind:
++ apply()
++ bind()
++ call()
+
+Wie bis jetzt in den Beispielen deutlich wurde, ist eines der Kernmerkmale von JavaScript die Abhängikeit vom Kontext.
+Deshalb managen die oben aufgeführten Funktion alles diesen Kontext und bieten Möglichkeiten das Standadverhalten von JavaScript zu unterbinden.
+
+*** bind()
+*** call()
+*** apply()
+
+
+** Einführung in die funktionale Programmierung
