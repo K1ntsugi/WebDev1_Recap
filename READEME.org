@@ -552,3 +552,36 @@ Deshalb managen die oben aufgeführten Funktion alles diesen Kontext und bieten 
 
 
 ** Einführung in die funktionale Programmierung
+*** Unterschied Imperativ vs. Deklarativ
+
+Zuerst nochmal das beispiel unser bisher verwendeten Additonsfunktion in Javascript, diesemal angewandt auf einen Array:
+#+begin_src js
+function sumArray(array) {
+  const arr = array;
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i += 1) {
+    sum += arr[i];
+  }
+
+  return sum;
+}
+
+console.log(sumArray([1,2,3]));
+#+end_src
+
+#+RESULTS:
+: 6
+
+Der Code den wir produziert haben, ist ein Algorithmus bzw. eine Abfolge von Arbeitsschritten die zu einer Summe führen kann. Die Funktion macht nur Scheiß, wenn in dem Array etwas anderes als Zahlenwerte irgendeiner Art stehen. Ist also nicht imutable/unveränderlich bzw. anfällig für Seiteneffekte.
+
+Jetzt das Gleiche in Haskell:
+#+begin_src haskell
+import Data
+
+sum [] = 0
+sum(x:xs) = x + sum xs
+
+#+end_src
+
+Hier steht nicht wie etwas addiert wird, sondern was es heißt, dass etwas addiert wird. Nämlich: Die Summe einer leeren Liste ist 0. Und zweitens: eine Summe einer nicht leeren Menge ist das erste Elementen plus die Summe der restlichen Liste. Also eine rekursive Definition.
