@@ -585,3 +585,46 @@ sum(x:xs) = x + sum xs
 #+end_src
 
 Hier steht nicht wie etwas addiert wird, sondern was es heißt, dass etwas addiert wird. Nämlich: Die Summe einer leeren Liste ist 0. Und zweitens: eine Summe einer nicht leeren Menge ist das erste Elementen plus die Summe der restlichen Liste. Also eine rekursive Definition.
+
+*** Iteration mit forEach
+#+begin_src js
+
+const gebaeck = [
+    'Breze',
+    'Semmel',
+    'Zopf',
+    'Dodde',
+    'Brot'
+];
+
+console.log("Iteration mit einfacher for-Schleife");
+for(let i = 0; i < gebaeck.length; i++){
+    console.log(gebaeck[i]);
+}
+
+console.log("\nIteration mit forEach-Schleife");
+gebaeck.forEach((inhalt, index, array) => {
+    console.log(inhalt);
+});
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Iteration mit einfacher for-Schleife
+Breze
+Semmel
+Zopf
+Dodde
+Brot
+
+Iteration mit forEach-Schleife
+Breze
+Semmel
+Zopf
+Dodde
+Brot
+undefined
+#+end_example
+
+*** Werte abbilden mit map()
