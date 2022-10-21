@@ -629,24 +629,20 @@ undefined
 
 *** Werte abbilden mit map()
 #+begin_src js :tangle mapping.js
-const bla = [{
-    name: 'a'
-  },
-  {
-    name: 'b'
-  },
-  {
-    name: 'c'
-  }
-];
+const bla = [{name:'a'},{name:'b'},{name:'c'}];
 
 const my_arr = [];
 for (let i = 0; i < bla.length; i++) {
-  my_arr.push(bla[i].name);
+   my_arr.push(bla[i].name);
 }
 
+//console.log(my_arr.push(bla[0].name));
 console.log(my_arr);
 #+end_src
+
+#+RESULTS:
+: 1
+: [ 'a' ]
 
 #+begin_src js :tangle mapping.js
 const artists = [{

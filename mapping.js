@@ -1,20 +1,11 @@
-const bla = [{
-    name: 'a'
-  },
-  {
-    name: 'b'
-  },
-  {
-    name: 'c'
-  }
-];
+const bla = [{name:'a'},{name:'b'},{name:'c'}];
 
 const my_arr = [];
 for (let i = 0; i < bla.length; i++) {
-  my_arr.push(bla[i].name);
+   my_arr.push(bla[i]);
 }
 
-console.log(my_arr);
+console.log(bla);
 
 const artists = [{
     name: 'Nick Cave'
