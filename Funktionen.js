@@ -1,10 +1,10 @@
-function add_0(x, y) {
+function add_0(x,y){
   return x + y;
 }
 
 const operation = add_0;
-const result = add_0(2, 2);
-const result2 = operation(2, 2);
+const result = add_0(2,2);
+const result2 = operation(2,2);
 
 console.log(result);
 console.log(result2);
@@ -13,184 +13,217 @@ console.log(operation.name);
 
 //#####################################################################################################################
 
-function add(x, y) {
-  return x + y;
+function add(x,y) {
+  return x+y;
 }
 
-function subtract(x, y) {
-  return x - y;
+function subtract(x,y) {
+  return x-y;
 }
 
-function multiply(x, y) {
-  return x * y;
+function multiply(x,y) {
+  return x*y;
 }
 
-function divide(x, y) {
-  return x / y;
+function divide(x,y) {
+  return x/y;
 }
 
-const operations = [add, subtract, multiply, divide];
+const operations = [
+  add,
+  subtract,
+  multiply,
+  divide
+]
 
 let op;
-for (let i = 0; i < operations.length; i++) {
+for (let i = 0; i < operations.length; i++){
+
   op = operations[i];
-  const x = (i + 1) * 2;
-  const y = (i + 1) * 4;
-  const res = op(x, y);
+  const x = (i+1)*2;
+  const y = (i+1)*4;
+  const res = op(x,y);
   console.log(res);
+
 }
 
 //#####################################################################################################################
 
-function metaOperation(operation, x, y) {
-  return operation(x, y);
+function metaOperation(operation, x, y){
+  return operation(x,y);
 }
 
 // Beispiel für eine nicht ausimplemetierte Callback-Funktion
 function asyncFunction(callback) {
-  let result = 0;
-  /* Hier die Berechnung des Ergebnisses */
-  callback(result);
+let result = 0;
+/* Hier die Berechnung des Ergebnisses */
+callback(result);
 }
 
 //#####################################################################################################################
 
 function operationFactory(name) {
-  switch (name) {
-    case "add":
-      return function (x, y) {
-        return x + y;
-      };
-    case "subtract":
-      return function (x, y) {
-        return x - y;
-      };
-    case "multiply":
-      return function (x, y) {
-        return x * y;
-      };
-    case "divide":
-      return function (x, y) {
-        return x / y;
-      };
-    default:
-      return function () {
-        return NaN;
-      };
-  }
+    switch(name) {
+        case 'add': return function(x, y) {
+            return x + y;
+        }
+        case 'subtract': return function(x, y) {
+            return x - y;
+        }
+        case 'multiply': return function(x, y) {
+            return x * y;
+        }
+        case 'divide': return function(x, y) {
+            return x / y;
+        }
+        default: return function() {
+            return NaN;
+        }
+    }
 }
 
-const add = operationFactory("add");
+const add = operationFactory('add');
 console.log(add(2, 2));
-const subtract = operationFactory("subtract");
+const subtract= operationFactory('subtract');
 console.log(subtract(2, 2));
-const multiply = operationFactory("multiply");
+const multiply = operationFactory('multiply');
 console.log(multiply(2, 2));
-const divide = operationFactory("divide");
+const divide = operationFactory ('divide');
 console.log(divide(2, 2));
-const unknown = operationFactory("unknown");
+const unknown = operationFactory('unknown');
 console.log(unknown(2, 2));
 
 // Die selbe Funktion mit Arrow-Operator implemetiert
 function arrowFactory(name) {
-  switch (name) {
-    case "add":
-      return (x, y) => x + y;
-    case "subtract":
-      return (x, y) => x - y;
-    case "multiply":
-      return (x, y) => x * y;
-    case "divide":
-      return (x, y) => x / y;
-    default:
-      return () => NaN;
-  }
+    switch(name) {
+        case 'add': return (x, y) => x + y;
+        case 'subtract': return (x, y) => x - y;
+        case 'multiply': return (x, y) => x * y;
+        case 'divide': return (x, y) => x / y;
+        default: return() => NaN;
+    }
 }
 
 //#####################################################################################################################
 
 const fruit = {
-  name: "Banana",
-  getName: function () {
-    return this.name;
-  },
-};
+    name : 'Banana',
+    getName: function() {
+        return this.name;
+    }
+}
 
 console.log(fruit.getName()); // output: Banana, wie erwartet
 
 function getNameGlobal() {
-  return this.name;
+    return this.name;
 }
 
 console.log(getNameGlobal());
 
 const anotherFruit = {
-  name: "Kiwi",
-  getName: getNameGlobal,
-};
+    name : 'Kiwi',
+    getName: getNameGlobal
+}
 
 console.log(anotherFruit.getName());
 
 //#####################################################################################################################
 function example(x) {
-  if (x) {
-    var y = 4711;
-  }
-  for (var i = 0; i < 4711; i++) {
-    /* Irgendwas machen */
-  }
-  console.log(y);
-  console.log(i);
+    if(x) {
+        var y = 4711;
+    }
+    for(var i=0; i<4711; i++) {
+        /* Irgendwas machen */
+    }
+    console.log(y);
+    console.log(i);
 }
 example(true);
 
 function example(x) {
-  console.log(y);
-  console.log(i);
+    console.log(y);
+    console.log(i);
 
-  if (x) {
-    var y = 4711;
-  }
-  for (var i = 0; i < 4711; i++) {
-    /* Irgendwas machen */
-  }
+    if(x) {
+        var y = 4711;
+    }
+    for(var i=0; i<4711; i++) {
+        /* Irgendwas machen */
+    }
 }
 example(true);
 
 //#####################################################################################################################
 
 // Bsp 1: Überladen durch weggelassen
-function add(x, y, log) {
-  const result = x + y;
-  if (log) {
-    console.log(result);
-  }
-  return result;
+function add(x, y, log){
+    const result = x + y;
+    if(log) {
+        console.log(result);
+    }
+    return result;
 }
 
-add(2, 2);
-add(2, 2, true);
+addOverload(2,2);
+addOverload(2,2,true);
 
 // Bsp 2: Überladen durch arguemts-Parameter
-function multiply(x, y) {
-  const result = x * y;
-  if (arguments[2]) {
-    console.log(result);
-  }
-  return result;
+function multiply(x,y){
+    const result = x * y;
+    if(arguments[2]){
+        console.log(result);
+    }
+    return result;
 }
 
-multiply(2, 2);
-multiply(2, 2, true);
+multiplyOverload(2,2);
+multiplyOverload(2,2,true);
 
 // Bsp 3: Konfigurations-Objekt
-function sub(x, y, config) {
-  const result = x - y;
-  if (config && config.log) {
-    console.log(result);
-  }
-  return result;
+function sub(x, y, config){
+    const result = x - y;
+    if(config && config.log) {
+        console.log(result);
+    }
+    return result;
 }
 
-sub(4, 2);
-sub(4, 2, { log: true });
+subOverload(4,2);
+subOverload(4,2 ,{log : true});
+
+function sumArray(array) {
+  const arr = array;
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i += 1) {
+    sum += arr[i];
+  }
+
+  return sum;
+}
+
+console.log(sumArray([1,2,3]));
+
+import Data
+
+sum [] = 0
+sum(x:xs) = x + sum xs
+
+const gebaeck = [
+    'Breze',
+    'Semmel',
+    'Zopf',
+    'Dodde',
+    'Brot'
+];
+
+console.log("Iteration mit einfacher for-Schleife");
+for(let i = 0; i < gebaeck.length; i++){
+    console.log(gebaeck[i]);
+}
+
+console.log("\nIteration mit forEach-Schleife");
+gebaeck.forEach((inhalt, index, array) => {
+    console.log(inhalt);
+});

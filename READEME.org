@@ -628,3 +628,127 @@ undefined
 #+end_example
 
 *** Werte abbilden mit map()
+#+begin_src js :tangle mapping.js
+const bla = [{
+    name: 'a'
+  },
+  {
+    name: 'b'
+  },
+  {
+    name: 'c'
+  }
+];
+
+const my_arr = [];
+for (let i = 0; i < bla.length; i++) {
+  my_arr.push(bla[i].name);
+}
+
+console.log(my_arr);
+#+end_src
+
+#+begin_src js :tangle mapping.js
+const artists = [{
+    name: 'Nick Cave'
+  },
+  {
+    name: 'Ben Harper'
+  }
+];
+const names = artists.map(
+  (artist, index, artists) => artist.name
+);
+console.log(names);
+#+end_src
+
+*** filter()
+#+begin_src js :tangle filter.js
+const albums = [
+    {
+        title: 'Push the Sky Away',
+        artist: 'Nick Cave',
+        released: 2013
+    },
+    {
+        title: 'No more shall we part',
+        artist: 'Nick Cave',
+        released: 2001
+    },
+    {
+        title: 'Live from Mars',
+        artist: 'Ben Harper',
+        released: 2003
+    },
+    {
+        title: 'The Will to Live',
+        artist: 'Ben Harper',
+        released: 1997
+    }
+];
+
+const releasedBefore2000 = [];
+for(let i=0, l=albums.length; i<l; i++) {
+    if(albums[i].released < 2000) {
+        releasedBefore2000.push(albums[i]);
+    }
+}
+console.log(releasedBefore2000);
+
+const before2000 = albums.filter(
+(album, index, albums) => album.released < 2000
+);
+
+console.log(before2000);
+#+end_src
+
+#+RESULTS:
+: [{ title: 'The Will to Live '(\, artist:) 'Ben Harper '(\, released:) 1997 }]
+
+*** Arrays parsen mit reduce()
+#+begin_src js :tangle reduce.js
+const artists = [{
+    name: 'Nick Cave',
+    albums: [{
+        title: 'Push the Sky Away'
+      },
+      {
+        title: 'No more shall we part'
+      }
+    ]
+  },
+  {
+    name: 'Ben Harper',
+    albums: [{
+        title: 'Live from Mars'
+      },
+      {
+        title: 'The Will to Live'
+      }
+    ]
+  }
+];
+
+// Imperativ
+let totalNumberOfAlbums = 0;
+for (let i = 0, l = artists.length; i < l; i++) {
+  totalNumberOfAlbums += artists[i].albums.length;
+}
+console.log(totalNumberOfAlbums);
+
+// Funktional
+console.log("*********************************************");
+const albumNums = artists.reduce(
+    (result, artist, index, artists) => {
+      return result + artist.albums.length;
+    },
+    0
+  );
+
+console.log(albumNums);
+#+end_src
+
+#+RESULTS:
+: 4
+: *********************************************
+: 4
